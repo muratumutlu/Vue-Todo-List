@@ -15,15 +15,17 @@
           <li v-for="todo in todos">
             <label>
 
-              <input type="checkbox" v-on:change="changeStatus(todo)" v-bind:checked="todo.done">
+                <!-- v-if ile durum kontrolünü gerçekleştiriyoruz v-if yerine @ kullanabiliriz, v-bind yerine de sadece ":" kullanabiliriz->
+                <!-- checking status with the help of v-if, if you prefer you may use @ instead of v-if, ":" instead of vi-bind-->
+              <input type="checkbox" @change="changeStatus(todo)" :checked="todo.done">
 
                 <!-- v-if ile durum kontrolünü gerçekleştiriyoruz -->
                 <!-- checking status with the help of v-if -->
                 <del v-if="todo.done">{{ todo.text }}</del>
 
-              <!-- v-else ile diğer durumlarda gerçekleştirilecekler belirtiyoruz -->
-              <!-- defining alternatives with the help of v-else -->
-              <span v-else>{{ todo.text }}</span>
+                <!-- v-else ile diğer durumlarda gerçekleştirilecekler belirtiyoruz -->
+                <!-- defining alternatives with the help of v-else -->
+                <span v-else>{{ todo.text }}</span>
 
             </label>
           </li>
