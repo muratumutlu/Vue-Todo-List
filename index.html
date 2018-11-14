@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Vue.js - TODO List Project</title>
+</head>
+<body>
+    <div id="app">
+        <h2>{{ title }}</h2>
+        <ol>
+          <li v-for="todo in todos">
+            <label>
+
+              <input type="checkbox" v-on:change="changeStatus(todo)" v-bind:checked="todo.done">
+
+                <!-- v-if ile durum kontrolünü gerçekleştiriyoruz -->
+                <!-- checking status with the help of v-if -->
+                <del v-if="todo.done">{{ todo.text }}</del>
+
+              <!-- v-else ile diğer durumlarda gerçekleştirilecekler belirtiyoruz -->
+              <!-- defining alternatives with the help of v-else -->
+              <span v-else>{{ todo.text }}</span>
+
+            </label>
+          </li>
+        </ol>
+      </div>
+
+      <script>
+      
+      new Vue({
+            el: "#app",
+            data: {
+                title: "Vue.js TODO List Sample",
+                todos: [
+                { text: "Help son with homeworks", done: true },
+                { text: "Learn Vuejs", done: false },
+                { text: "Continue to develop mobile game", done: false },
+                { text: "Read tech news on Pocket", done: false },
+                { text: "Drink coffe with friends", done: false }
+                ],
+            },
+            methods: {
+                changeStatus: function(todo){
+                    todo.done = !todo.done
+                }
+            }
+            })
+
+        </script>
+
+</body>
+</html>
